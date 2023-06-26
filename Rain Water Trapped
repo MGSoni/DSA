@@ -1,0 +1,35 @@
+//Please Try Prefix and Sufix Solution before going for optimal Solution mentioned below
+
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int trap(final List<Integer> A) {
+
+        int maxLeft = 0;
+        int maxRight = 0;
+
+        int i=0;
+        int j=A.size()-1;
+
+        int waterTrapped=0;
+
+        while(i<=j){
+            
+            if(A.get(i)<= A.get(j)){
+                if(A.get(i)>maxLeft){
+                    maxLeft=A.get(i);
+                }else
+                    waterTrapped+=maxLeft-A.get(i);
+                i++;
+            }else{
+                if(A.get(j)>maxRight){
+                    maxRight=A.get(j);
+                }else
+                    waterTrapped+=maxRight-A.get(j);
+                j--;
+            }
+        }
+
+    return waterTrapped;
+
+    }
+}
