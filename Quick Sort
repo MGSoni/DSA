@@ -1,0 +1,41 @@
+public class Solution {
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        quickSort(A,0,A.size()-1);
+        return A;
+    }
+
+    private void quickSort(ArrayList<Integer> A, int left, int right){
+        if(left>=right){
+            return;
+        }
+
+        int pivot = partition(A,left,right); //0 5
+        //System.out.print(pivot);
+        quickSort(A,left,pivot-1);
+        quickSort(A,pivot+1,right);
+    }
+    private int partition(ArrayList<Integer> A, int left,int right){
+
+        int p1=left+1; //1
+        int p2=right; //5
+        int pivot=A.get(left);
+
+        while(p1<=p2){
+            if(A.get(p1)<=pivot){
+                    p1++;
+            }else if(A.get(p2)>pivot){
+                p2--;
+            }else{
+                Collections.swap(A,p1,p2);
+                p1++;
+                p2--;
+            }
+        }
+
+        Collections.swap(A,p1-1,left);
+        return p1-1;
+
+    }
+
+   
+}
