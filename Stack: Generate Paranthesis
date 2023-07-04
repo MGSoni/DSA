@@ -1,0 +1,26 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        
+
+        List<String> s = new ArrayList<>();
+        function(n,s,0,0,"");
+        return s;
+    }
+
+    private void function(int n, List<String> s,int open, int close, String temp){
+
+        if(open==n && close ==n){
+            s.add(temp);
+            return;
+        }   
+
+
+        if(open<n){
+            function(n,s,open+1,close,temp+"(");
+        }
+
+        if(close<open){
+            function(n,s,open,close+1,temp+")");
+        }
+    }
+}
