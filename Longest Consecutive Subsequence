@@ -1,0 +1,30 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int longestConsecutive(final List<Integer> A) {
+
+
+        Set<Integer> set = new HashSet<Integer>();
+
+        for(Integer x:A){
+            set.add(x);
+        }
+
+        int currentLength=0;
+        int maxLength=0;
+        for(Integer x:A){
+            if(!set.contains(x-1)){
+                int temp=x;
+                while(set.contains(temp)){
+                    currentLength++;
+                    temp++;
+                }
+            }
+            
+            if(currentLength>maxLength){
+                maxLength=currentLength;
+            }
+            currentLength=0;
+        }
+        return maxLength;
+    }
+}
