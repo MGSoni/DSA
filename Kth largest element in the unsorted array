@@ -1,0 +1,22 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+
+	static int kthLargest(ArrayList<Integer> arr, int size, int K) {
+		
+		int x=size-1;
+		while(x>=0){
+			int maxInd=x;
+			for(int j=x-1;j>=0;j--){
+				if(arr.get(j)>arr.get(maxInd)){
+					maxInd=j;
+				}
+			}
+			Collections.swap(arr, x, maxInd);
+			x--;
+		}
+
+		return arr.get(size-K);
+
+	}
+}
