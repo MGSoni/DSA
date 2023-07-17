@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int maxProfit=0;
+        int j= prices.length-1;
+        int maxLeft=prices[j]; //4
+        while(j>=0){
+            if(prices[j]>maxLeft){
+                maxLeft=prices[j];
+            }
+            if(maxLeft-prices[j]>maxProfit){
+                maxProfit=maxLeft-prices[j];
+            }
+            j--;
+        }
+        return maxProfit;
+    }
+}
