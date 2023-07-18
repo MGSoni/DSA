@@ -1,0 +1,35 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A, int B) {
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for(Integer i:A){
+            minHeap.add(i);
+        }
+        int count=B;
+        while(count>0){
+            int element = minHeap.peek();
+
+            if(element>=0){
+                if(count%2==1){
+                    minHeap.remove();
+                    element*=-1;
+                    minHeap.add(element);
+                }
+                break;
+            }else{
+                minHeap.remove();
+                element*=-1;
+                minHeap.add(element);
+            }
+            count--;
+        }
+
+        int result=0;
+        while(minHeap.size()>0){
+            result += minHeap.peek();
+            minHeap.remove();
+        }
+        return result;
+    }
+}
