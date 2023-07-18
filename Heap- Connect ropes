@@ -1,0 +1,27 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A) {
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for(Integer i: A){
+            minHeap.add(i);
+        }
+
+        int result=0;
+
+        while(minHeap.size()>1){
+
+            int a = minHeap.peek();
+            minHeap.remove();
+            int b = minHeap.peek();
+            minHeap.remove();
+
+            int sum=a+b;
+
+            minHeap.add(sum);
+
+            result+=sum;
+        }
+        return result;
+    }
+}
