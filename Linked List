@@ -1,0 +1,65 @@
+
+    public static void insert_node(int position, int value) {
+        
+        if(position>=1 && position<=size+1){
+            Node newNode = new Node(value);
+
+            if(position==1){
+
+                newNode.next = root;
+                root = newNode;
+
+            }else{
+                int count = 1;
+                Node temp = root;
+                while(count<position-1){
+                    temp=temp.next;
+                    count++;
+                }
+                newNode.next = temp.next;
+                temp.next=newNode;
+            }
+            size++;
+        }
+    }
+
+    public static void delete_node(int position) {
+        
+        if(position>=1 && position<=size){
+            if(position==1){
+                root=root.next;
+            }else{
+                int count=1;
+                Node temp = root;
+                while(count<position-1){
+                    temp=temp.next;
+                    count++;
+                }
+                temp.next=temp.next.next;
+            }
+            size--;
+        }
+    }
+
+    public static void print_ll() {
+        Node temp=root;
+        while(temp!=null){
+            System.out.print(temp.data);
+            if(temp.next!=null){
+                System.out.print(" ");
+            }
+            temp=temp.next;
+        }
+    }
+
+    static int size = 0;
+    static Node root = null;
+
+    static class Node{
+        int data;
+        Node next;
+        Node(int value){
+            data=value;
+            next=null;
+        }
+    }
