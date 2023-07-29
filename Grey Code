@@ -1,0 +1,27 @@
+public class Solution {
+    public ArrayList<Integer> grayCode(int A) {
+
+        ArrayList<Integer> resultList = new ArrayList<>();
+        
+        if(A==0){
+            resultList.add(0);
+            return resultList;
+        }
+
+        if(A==1){
+            resultList.add(0);
+            resultList.add(1);
+            return resultList;
+        }
+        
+        //int prefix=
+        //System.out.print(prefix);
+        resultList = grayCode(A-1);
+
+ //System.out.print(prefix);
+        for(int i=resultList.size()-1;i>=0;i--){
+            resultList.add((1<<(A-1))+resultList.get(i));
+        }
+        return resultList;
+    }
+}
